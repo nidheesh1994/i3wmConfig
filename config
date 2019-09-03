@@ -193,8 +193,16 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master 1+ toggle # mute sound
 
+# i3 gaps
+gaps inner 5
+gaps outer 5
+
+
 # Startups
 exec --no-startup-id parcellite
+exec --no-startup-id wall -R
 assign [class="Phpstorm"] $ws1
 assign [class="Google-chrome"] $ws2
 assign [class="Spotify"] $ws9
+exec --no-startup-id compton --config ~/.config/.compton.conf
+exec --no-startup-id nitrogen --restore &
