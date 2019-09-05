@@ -96,11 +96,11 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 Dev
 set $ws2 Web
-set $ws3 "3"
+set $ws3 L1
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
-set $ws7 "7"
+set $ws7 L2
 set $ws8 "8"
 set $ws9 Music
 set $ws10 "10"
@@ -116,6 +116,7 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+bindsym $mod+p workspace $ws3; workspace $ws7
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -193,6 +194,26 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master 1+ toggle # mute sound
 
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+#set_from_resource $fg i3wm.color7 #d58de3
+#set_from_resource $bg i3wm.color2 #040001
+
+#class                 border  backgr. text indicator child_border
+client.focused		#d58de3	#6c20a5	#a7ddf2	#d834f7	#9323a8
+#client.focused_inactive $bg     $bg     $fg  $bg       $bg
+#client.unfocused        $bg     $bg     $fg  $bg       $bg
+#client.urgent           $bg     $bg     $fg  $bg       $bg
+#client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+#client.background       $bg
+
+# PROTIP: You can also dynamically set dmenu's colors this way:
+#bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
+
 # i3 gaps
 gaps inner 5
 gaps outer 5
@@ -206,3 +227,4 @@ assign [class="Google-chrome"] $ws2
 assign [class="Spotify"] $ws9
 exec --no-startup-id compton --config ~/.config/.compton.conf
 exec --no-startup-id nitrogen --restore &
+#exec_always --no-startup-id ~/.config/i3/.i3/startup/polybar.sh
